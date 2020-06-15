@@ -1,0 +1,12 @@
+{% extends 'template.twig' %}
+
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+	<div class="container">
+			<ul>
+				<li>{{ message.content }} {{ message.created_at.fromNow() }}</li>
+			</ul>
+	</div>
+{% endblock %}

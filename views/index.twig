@@ -1,0 +1,31 @@
+{% extends 'template.twig' %}
+
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+	<div class="container my-4">
+		<h1>Welcome to the Accueil</h1>
+		<p>{{ date }}</p>
+			{# {% if locals.flash.error %} #}
+				<p>{{ call }}</p>
+				<p class="text-danger">{{ error }}</p>
+			{# {% endif %} #}
+		<form action="/" method="post">
+			<div class="form-group">
+				<label for="message">Message</label>
+				<textarea class="form-control" name="message" id="message" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-outline-primary">Envoyer</button>
+		</form>
+	</div>
+	<div class="container">
+		{% for message in messages %}
+			<ul>
+				<li>{{ message.content }} {{ message.created_at.fromNow() }} <a href="/message/{{ message.id }}">Afficher</a></li>
+			</ul>
+		{% else %}
+    	Aucun commentaires pour le moment.
+		{% endfor %}
+	</div>
+{% endblock %}
